@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\evertec.Application.DTO\evertec.Application.DTO.csproj" />
+    <ProjectReference Include="..\evertec.Application.Interface\evertec.Application.Interface.csproj" />
+    <ProjectReference Include="..\evertec.Application.Main\evertec.Application.Main.csproj" />
+    <ProjectReference Include="..\evertec.Domain.Core\evertec.Domain.Core.csproj" />
+    <ProjectReference Include="..\evertec.Domain.Entity\evertec.Domain.Entity.csproj" />
+    <ProjectReference Include="..\evertec.Domain.Interface\evertec.Domain.Interface.csproj" />
+    <ProjectReference Include="..\evertec.InfraStructure.Data\evertec.InfraStructure.Data.csproj" />
+    <ProjectReference Include="..\evertec.InfraStructure.Interface\evertec.InfraStructure.Interface.csproj" />
+    <ProjectReference Include="..\evertec.InfraStructure.Repository\evertec.InfraStructure.Repository.csproj" />
+    <ProjectReference Include="..\evertec.Transversal.Common\evertec.Transversal.Common.csproj" />
+    <ProjectReference Include="..\evertec.Transversal.Logging\evertec.Transversal.Logging.csproj" />
+    <ProjectReference Include="..\evertec.Transversal.Mapper\evertec.Transversal.Mapper.csproj" />
+  </ItemGroup>
+
+</Project>
