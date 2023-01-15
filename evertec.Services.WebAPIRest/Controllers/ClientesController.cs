@@ -204,25 +204,5 @@ namespace evertec.Services.WebAPIRest.Controllers
                 return BadRequest(response);
             }
         }
-
-        [NonAction]
-        private string GetImagebycode(string image)
-        {
-            string hosturl = "https://localhost:7294";
-            string Filepath = GetActualpath(image);            
-            string pathImage = string.Empty;
-
-            if (System.IO.File.Exists(Filepath))
-                pathImage = hosturl + "/Resources/images/" + image;
-
-            return pathImage;
-        }
-
-        [NonAction]
-        public string GetActualpath(string FileName)
-        {
-            return env.WebRootPath + "\\Resources\\images\\" + FileName;
-        }
-
     }    
 }
