@@ -179,13 +179,13 @@ namespace evertec.Services.WebAPIRest.Controllers
         }
 
         [HttpDelete("DelAsync")]
-        public async Task<IActionResult> DelAsync(int ID)
+        public async Task<IActionResult> DelAsync(int Id)
         {
             Response<bool> response = new Response<bool>();
 
             try
             {
-                response = await _Application.DeleteAsync(ID);
+                response = await _Application.DeleteAsync(Id);
                 if (response.IsSuccess)
                 {
                     return Ok(response);

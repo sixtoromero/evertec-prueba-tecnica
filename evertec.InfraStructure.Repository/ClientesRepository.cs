@@ -62,10 +62,13 @@ namespace evertec.InfraStructure.Repository
                 var query = "uspDelClientes";
                 var parameters = new DynamicParameters();
 
-                parameters.Add("IdCliente", ID);
+                parameters.Add("@Id", ID);
 
-                var result = await connection.ExecuteAsync(query, param: parameters, commandType: CommandType.StoredProcedure);
-                return result > 0;
+                var result = await connection.QuerySingleAsync<string>(query, param: parameters, commandType: System.Data.CommandType.StoredProcedure);
+                return result == "success" ? true : false;
+
+                //var result = await connection.ExecuteAsync(query, param: parameters, commandType: CommandType.StoredProcedure);
+                //return result > 0;
             }
         }
 
