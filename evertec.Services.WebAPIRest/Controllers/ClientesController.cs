@@ -1,5 +1,6 @@
 ﻿using evertec.Application.DTO;
 using evertec.Application.Interface;
+using evertec.Domain.Entity;
 using evertec.Services.WebAPIRest.Helpers;
 using evertec.Transversal.Common;
 using Microsoft.AspNetCore.Http;
@@ -179,19 +180,42 @@ namespace evertec.Services.WebAPIRest.Controllers
         }
 
         [HttpDelete("DelAsync")]
-        public async Task<IActionResult> DelAsync(int Id)
+        public async Task<IActionResult> DelAsync(int Id, string fileName)
         {
-            Response<bool> response = new Response<bool>();
-
+            Response<bool> response = new Response<bool>();            
             try
             {
-                response = await _Application.DeleteAsync(Id);
-                if (response.IsSuccess)
+                string pathDirectory = Path.Combine(env.WebRootPath, $"Resources\\images\\");
+                if (Directory.Exists(pathDirectory))
                 {
-                    return Ok(response);
+                    var fileExists = Path.Combine(pathDirectory, fileName);
+                    FileInfo fi = new FileInfo(fileExists);
+                    if (fi.Exists)
+                    {
+                        response = await _Application.DeleteAsync(Id);
+
+                        if (response.IsSuccess)
+                        {
+                            System.IO.File.Delete(fileExists);
+                            fi.Delete();
+                            return Ok(response);
+                        }
+                        else
+                        {
+                            return BadRequest(response); 
+                        }
+                    }
+                    else
+                    {
+                        response.IsSuccess = false;
+                        response.Message = "El archivo ya no existe.";
+                        return BadRequest(response);
+                    }
                 }
                 else
                 {
+                    response.IsSuccess = false;
+                    response.Message = "El archivo ya no existe.";
                     return BadRequest(response);
                 }
             }
