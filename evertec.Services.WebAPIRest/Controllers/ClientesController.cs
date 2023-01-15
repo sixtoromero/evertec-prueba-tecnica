@@ -88,6 +88,7 @@ namespace evertec.Services.WebAPIRest.Controllers
 
             Response<bool> response = new Response<bool>();
             string fileExt = string.Empty;
+            string fileName = Guid.NewGuid().ToString();
 
             try
             {
@@ -96,14 +97,15 @@ namespace evertec.Services.WebAPIRest.Controllers
                     if (File.Length > 0)
                     {
                         fileExt = Path.GetExtension(File.FileName);
-                        string pathDirectory = Path.Combine(env.ContentRootPath, $"Resources\\images\\{Guid.NewGuid()}");
+                        string pathDirectory = Path.Combine(env.ContentRootPath, $"Resources\\images\\");                        
+
                         if (!Directory.Exists(pathDirectory))
                         {
                             Directory.CreateDirectory(pathDirectory);
                         }
-
+                          
                         //Validando si existe el archivo.
-                        var fileExists = Path.Combine(pathDirectory, File.FileName);
+                        var fileExists = Path.Combine(pathDirectory, fileName);
                         FileInfo fi = new FileInfo(fileExists);
                         if (fi.Exists)
                         {
@@ -111,8 +113,8 @@ namespace evertec.Services.WebAPIRest.Controllers
                             fi.Delete();
                         }
 
-                        var uploading = Path.Combine(pathDirectory, File.FileName);
-
+                        var uploading = Path.Combine(pathDirectory, fileName);
+                        modelDto!.Foto = uploading;
                         using (var stream = new FileStream(uploading, FileMode.Create))
                         {
                             await File.CopyToAsync(stream);
