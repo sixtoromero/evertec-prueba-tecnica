@@ -30,4 +30,8 @@
     <ProjectReference Include="..\evertec.Transversal.Mapper\evertec.Transversal.Mapper.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\images\" />
+  </ItemGroup>
+
 </Project>

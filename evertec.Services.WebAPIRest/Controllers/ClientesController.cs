@@ -5,6 +5,7 @@ using evertec.Transversal.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Reflection;
 
 namespace evertec.Services.WebAPIRest.Controllers
 {
@@ -14,12 +15,15 @@ namespace evertec.Services.WebAPIRest.Controllers
     {
         private readonly IClientesApplication _Application;
         private readonly AppSettings _appSettings;
+        private readonly IWebHostEnvironment env;
 
         public ClientesController(IClientesApplication _Application,
-                                  IOptions<AppSettings> appSettings)
+                                  IOptions<AppSettings> appSettings,
+                                  IWebHostEnvironment env)
         {
             this._Application = _Application;
             _appSettings = appSettings.Value;
+            this.env = env;
         }
 
         [HttpGet("GetAllAsync")]
@@ -77,12 +81,45 @@ namespace evertec.Services.WebAPIRest.Controllers
         }
 
         [HttpPost("InsertAsync")]
-        public async Task<IActionResult> InsertAsync([FromBody] ClienteDTO modelDto)
+        //public async Task<IActionResult> InsertAsync(IFormFile File, [FromForm] ClienteDTO modelDto)
+        public async Task<IActionResult> InsertAsync(IFormFile File, [FromForm] string jsonModel)
         {
+            ClienteDTO modelDto = Newtonsoft.Json.JsonConvert.DeserializeObject<ClienteDTO>(jsonModel);
+
             Response<bool> response = new Response<bool>();
+            string fileExt = string.Empty;
 
             try
             {
+                if (File != null)
+                {
+                    if (File.Length > 0)
+                    {
+                        fileExt = Path.GetExtension(File.FileName);
+                        string pathDirectory = Path.Combine(env.ContentRootPath, $"Resources\\images\\{Guid.NewGuid()}");
+                        if (!Directory.Exists(pathDirectory))
+                        {
+                            Directory.CreateDirectory(pathDirectory);
+                        }
+
+                        //Validando si existe el archivo.
+                        var fileExists = Path.Combine(pathDirectory, File.FileName);
+                        FileInfo fi = new FileInfo(fileExists);
+                        if (fi.Exists)
+                        {
+                            System.IO.File.Delete(fileExists);
+                            fi.Delete();
+                        }
+
+                        var uploading = Path.Combine(pathDirectory, File.FileName);
+
+                        using (var stream = new FileStream(uploading, FileMode.Create))
+                        {
+                            await File.CopyToAsync(stream);
+                        }
+                    }
+                }
+
                 if (modelDto == null)
                     return BadRequest();
 
