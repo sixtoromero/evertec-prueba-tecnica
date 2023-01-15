@@ -11,6 +11,7 @@ using evertec.Transversal.Logging;
 using evertec.Transversal.Mapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
@@ -26,26 +27,26 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllersWithViews().AddNewtonsoftJson();
-builder.Services.AddRazorPages();
-builder.Services.AddMvc(options =>
-{
-    options.EnableEndpointRouting = false;
-});
+//builder.Services.AddRazorPages();
+//builder.Services.AddMvc(options =>
+//{
+//    options.EnableEndpointRouting = false;
+//});
 
 builder.Services.AddControllers().AddNewtonsoftJson();
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.IgnoreNullValues = true;
-});
+//builder.Services.AddControllers().AddJsonOptions(options =>
+//{
+//    options.JsonSerializerOptions.IgnoreNullValues = true;
+//});
 
-builder.Services.AddControllers().AddXmlSerializerFormatters();
-builder.Services.AddControllers().AddXmlDataContractSerializerFormatters();
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = long.MaxValue;
-    options.ValueLengthLimit = int.MaxValue;
-    options.MemoryBufferThreshold = int.MaxValue;
-});
+//builder.Services.AddControllers().AddXmlSerializerFormatters();
+//builder.Services.AddControllers().AddXmlDataContractSerializerFormatters();
+//builder.Services.Configure<FormOptions>(options =>
+//{
+//    options.MultipartBodyLengthLimit = long.MaxValue;
+//    options.ValueLengthLimit = int.MaxValue;
+//    options.MemoryBufferThreshold = int.MaxValue;
+//});
 
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
 
@@ -142,7 +143,12 @@ app.UseAuthorization();
 app.UseAuthentication();
 app.UseCors("CorsPolicy");
 
-
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+    RequestPath = new PathString("/images")
+});
 
 app.MapControllers();
 

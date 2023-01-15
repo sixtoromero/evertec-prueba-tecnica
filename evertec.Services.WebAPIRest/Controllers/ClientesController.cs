@@ -89,6 +89,7 @@ namespace evertec.Services.WebAPIRest.Controllers
             Response<bool> response = new Response<bool>();
             string fileExt = string.Empty;
             string fileName = Guid.NewGuid().ToString();
+            string hosturl = "https://localhost:7294/Resources/images/";
 
             try
             {
@@ -97,7 +98,7 @@ namespace evertec.Services.WebAPIRest.Controllers
                     if (File.Length > 0)
                     {
                         fileExt = Path.GetExtension(File.FileName);
-                        string pathDirectory = Path.Combine(env.ContentRootPath, $"Resources\\images\\");                        
+                        string pathDirectory = Path.Combine(env.WebRootPath, $"Resources\\images\\");                        
 
                         if (!Directory.Exists(pathDirectory))
                         {
@@ -113,8 +114,10 @@ namespace evertec.Services.WebAPIRest.Controllers
                             fi.Delete();
                         }
 
-                        var uploading = Path.Combine(pathDirectory, fileName);
-                        modelDto!.Foto = uploading;
+                        var uploading = Path.Combine(pathDirectory, fileName + fileExt);
+                        
+                        modelDto!.Foto = Path.Combine(hosturl, fileName + fileExt);
+
                         using (var stream = new FileStream(uploading, FileMode.Create))
                         {
                             await File.CopyToAsync(stream);
@@ -200,6 +203,26 @@ namespace evertec.Services.WebAPIRest.Controllers
 
                 return BadRequest(response);
             }
-        }        
+        }
+
+        [NonAction]
+        private string GetImagebycode(string image)
+        {
+            string hosturl = "https://localhost:7294";
+            string Filepath = GetActualpath(image);            
+            string pathImage = string.Empty;
+
+            if (System.IO.File.Exists(Filepath))
+                pathImage = hosturl + "/Resources/images/" + image;
+
+            return pathImage;
+        }
+
+        [NonAction]
+        public string GetActualpath(string FileName)
+        {
+            return env.WebRootPath + "\\Resources\\images\\" + FileName;
+        }
+
     }    
 }
