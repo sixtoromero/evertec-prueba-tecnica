@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace evertec.Domain.Entity
+namespace evertec.Application.DTO
 {
-    public class Cliente
+    public class UsuariosDTO
     {
         public int Id { get; set; }
         public string Nombres { get; set; } = string.Empty;
         public string Apellidos { get; set; } = string.Empty;
-        public DateTime Fecha_Nacimiento { get; set; }
-        public string Foto { get; set; }
-        public bool Estado_Civil { get; set; }
-        public bool Tiene_Hermanos { get; set; }
+        public string Correo { get; set; } = string.Empty;
+        public string? Usuario { get; set; } = string.Empty;
+        public string Contrasena { get; set; } = string.Empty;
+        public string? Token { get; set; }
+
     }
 }

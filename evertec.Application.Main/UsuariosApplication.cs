@@ -12,25 +12,48 @@ using System.Threading.Tasks;
 
 namespace evertec.Application.Main
 {
-    public class ClientesApplication : IClientesApplication
+    public class UsuariosApplication : IUsuariosApplication
     {
-        private readonly IClientesDomain _Domain;
+        private readonly IUsuariosDomain _Domain;
         private readonly IMapper _mapper;
-        private readonly IAppLogger<ClientesApplication> _logger;
+        private readonly IAppLogger<UsuariosApplication> _logger;
 
-        public ClientesApplication(IClientesDomain _Domain, IMapper mapper, IAppLogger<ClientesApplication> logger)
+        public UsuariosApplication(IUsuariosDomain _Domain, IMapper mapper, IAppLogger<UsuariosApplication> logger)
         {
             this._Domain = _Domain;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public async Task<Response<bool>> InsertAsync(ClienteDTO modelDto)
+        public async Task<Response<UsuariosDTO>> GetUserByUserName(UsuariosDTO model)
+        {
+            var response = new Response<UsuariosDTO>();
+            try
+            {
+                var resp = _mapper.Map<Usuarios>(model);
+                var result = await _Domain.GetUserByUserName(resp);
+
+                response.Data = _mapper.Map<UsuariosDTO>(result);
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Consulta Exitosa!";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
+        public async Task<Response<bool>> InsertAsync(UsuariosDTO modelDto)
         {
             var response = new Response<bool>();
             try
             {
-                var resp = _mapper.Map<Cliente>(modelDto);
+                var resp = _mapper.Map<Usuarios>(modelDto);
                 response.Data = await _Domain.InsertAsync(resp);
                 if (response.Data)
                 {
@@ -43,19 +66,17 @@ namespace evertec.Application.Main
                 response.Data = false;
                 response.IsSuccess = false;
                 response.Message = ex.Message;
-
-                _logger.LogError(ex.Message);
             }
 
             return response;
         }
 
-        public async Task<Response<bool>> UpdateAsync(ClienteDTO modelDto)
+        public async Task<Response<bool>> UpdateAsync(UsuariosDTO modelDto)
         {
             var response = new Response<bool>();
             try
             {
-                var resp = _mapper.Map<Cliente>(modelDto);
+                var resp = _mapper.Map<Usuarios>(modelDto);
                 response.Data = await _Domain.UpdateAsync(resp);
                 if (response.Data)
                 {
@@ -96,14 +117,14 @@ namespace evertec.Application.Main
             return response;
         }
 
-        public async Task<Response<ClienteDTO>> GetAsync(int ID)
+        public async Task<Response<UsuariosDTO>> GetAsync(int ID)
         {
-            var response = new Response<ClienteDTO>();
+            var response = new Response<UsuariosDTO>();
             try
             {
                 var result = await _Domain.GetAsync(ID);
 
-                response.Data = _mapper.Map<ClienteDTO>(result);
+                response.Data = _mapper.Map<UsuariosDTO>(result);
                 if (response.Data != null)
                 {
                     response.IsSuccess = true;
@@ -119,14 +140,14 @@ namespace evertec.Application.Main
             return response;
         }
 
-        public async Task<Response<IEnumerable<ClienteDTO>>> GetAllAsync()
+        public async Task<Response<IEnumerable<UsuariosDTO>>> GetAllAsync()
         {
-            var response = new Response<IEnumerable<ClienteDTO>>();
+            var response = new Response<IEnumerable<UsuariosDTO>>();
             try
             {
                 var resp = await _Domain.GetAllAsync();
 
-                response.Data = _mapper.Map<IEnumerable<ClienteDTO>>(resp);
+                response.Data = _mapper.Map<IEnumerable<UsuariosDTO>>(resp);
                 if (response.Data != null)
                 {
                     response.IsSuccess = true;
@@ -141,5 +162,6 @@ namespace evertec.Application.Main
 
             return response;
         }
+
     }
 }

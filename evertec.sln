@@ -15,33 +15,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transversal", "Transversal", "{3E524525-F8A6-4E7E-8E6E-B94FAC45A18A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Transversal.Common", "evertec.Transversal.Common\evertec.Transversal.Common.csproj", "{38807C48-5B3F-4E71-AD83-D82F95808AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Transversal.Common", "evertec.Transversal.Common\evertec.Transversal.Common.csproj", "{38807C48-5B3F-4E71-AD83-D82F95808AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Transversal.Logging", "evertec.Transversal.Logging\evertec.Transversal.Logging.csproj", "{C1EB25DA-0328-4182-82A9-491756406D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Transversal.Logging", "evertec.Transversal.Logging\evertec.Transversal.Logging.csproj", "{C1EB25DA-0328-4182-82A9-491756406D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Transversal.Mapper", "evertec.Transversal.Mapper\evertec.Transversal.Mapper.csproj", "{4ADB3B07-2705-4D44-B97F-A2ADF4AD6917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Transversal.Mapper", "evertec.Transversal.Mapper\evertec.Transversal.Mapper.csproj", "{4ADB3B07-2705-4D44-B97F-A2ADF4AD6917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Transversal.Utils", "evertec.Transversal.Utils\evertec.Transversal.Utils.csproj", "{0B4C7296-194C-47C1-AB17-61F64A1A778D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Transversal.Utils", "evertec.Transversal.Utils\evertec.Transversal.Utils.csproj", "{0B4C7296-194C-47C1-AB17-61F64A1A778D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Services.WebAPIRest", "evertec.Services.WebAPIRest\evertec.Services.WebAPIRest.csproj", "{25973C8C-82DB-4EA1-A970-4BF79DA9AE35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Services.WebAPIRest", "evertec.Services.WebAPIRest\evertec.Services.WebAPIRest.csproj", "{25973C8C-82DB-4EA1-A970-4BF79DA9AE35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.InfraStructure.Data", "evertec.InfraStructure.Data\evertec.InfraStructure.Data.csproj", "{468A8AA0-334E-4569-9D83-56574307D3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.InfraStructure.Data", "evertec.InfraStructure.Data\evertec.InfraStructure.Data.csproj", "{468A8AA0-334E-4569-9D83-56574307D3F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.InfraStructure.Interface", "evertec.InfraStructure.Interface\evertec.InfraStructure.Interface.csproj", "{5041272A-F9CD-4837-A20D-96F996025B15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.InfraStructure.Interface", "evertec.InfraStructure.Interface\evertec.InfraStructure.Interface.csproj", "{5041272A-F9CD-4837-A20D-96F996025B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.InfraStructure.Repository", "evertec.InfraStructure.Repository\evertec.InfraStructure.Repository.csproj", "{78DC71A6-36C0-4C2F-A07B-1D5C7B3D718C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.InfraStructure.Repository", "evertec.InfraStructure.Repository\evertec.InfraStructure.Repository.csproj", "{78DC71A6-36C0-4C2F-A07B-1D5C7B3D718C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Domain.Core", "evertec.Domain.Core\evertec.Domain.Core.csproj", "{4FC0276F-5FFF-4D15-8517-61729395C028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Domain.Core", "evertec.Domain.Core\evertec.Domain.Core.csproj", "{4FC0276F-5FFF-4D15-8517-61729395C028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Domain.Entity", "evertec.Domain.Entity\evertec.Domain.Entity.csproj", "{855C7623-7B6A-4B64-A7F6-45798FE5AEC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Domain.Entity", "evertec.Domain.Entity\evertec.Domain.Entity.csproj", "{855C7623-7B6A-4B64-A7F6-45798FE5AEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Domain.Interface", "evertec.Domain.Interface\evertec.Domain.Interface.csproj", "{EEA60398-FE76-4DCF-BF6E-6A54CF5DE12E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Domain.Interface", "evertec.Domain.Interface\evertec.Domain.Interface.csproj", "{EEA60398-FE76-4DCF-BF6E-6A54CF5DE12E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Application.DTO", "evertec.Application.DTO\evertec.Application.DTO.csproj", "{2F716FF1-58EC-4EFD-8943-92E762991EB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Application.DTO", "evertec.Application.DTO\evertec.Application.DTO.csproj", "{2F716FF1-58EC-4EFD-8943-92E762991EB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Application.Interface", "evertec.Application.Interface\evertec.Application.Interface.csproj", "{BA4C7810-DE75-4C83-98AF-B07A3ED612D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Application.Interface", "evertec.Application.Interface\evertec.Application.Interface.csproj", "{BA4C7810-DE75-4C83-98AF-B07A3ED612D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "evertec.Application.Main", "evertec.Application.Main\evertec.Application.Main.csproj", "{7D4BB154-1902-4D93-AB4E-CBE17204C4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Application.Main", "evertec.Application.Main\evertec.Application.Main.csproj", "{7D4BB154-1902-4D93-AB4E-CBE17204C4E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{77615B86-0C5E-4536-8CFD-0E70414D1979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -245,6 +247,7 @@ Global
 		{2F716FF1-58EC-4EFD-8943-92E762991EB4} = {515F5F59-39B9-486A-B61F-5FE42C72D341}
 		{BA4C7810-DE75-4C83-98AF-B07A3ED612D7} = {515F5F59-39B9-486A-B61F-5FE42C72D341}
 		{7D4BB154-1902-4D93-AB4E-CBE17204C4E1} = {515F5F59-39B9-486A-B61F-5FE42C72D341}
+		{77615B86-0C5E-4536-8CFD-0E70414D1979} = {5CFEF30B-EDE5-4DF2-8DFD-091E38788B8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7670075-745A-4922-904E-E3F4ECC07284}

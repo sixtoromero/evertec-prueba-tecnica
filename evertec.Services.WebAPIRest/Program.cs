@@ -53,6 +53,11 @@ builder.Services.AddScoped<IClientesApplication, ClientesApplication>();
 builder.Services.AddScoped<IClientesDomain, ClientesDomain>();
 builder.Services.AddScoped<IClientesRepository, ClientesRepository>();
 
+//Usuarios
+builder.Services.AddScoped<IUsuariosApplication, UsuariosApplication>();
+builder.Services.AddScoped<IUsuariosDomain, UsuariosDomain>();
+builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+
 builder.Services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
 var key = Encoding.ASCII.GetBytes(appSettings.Secret);
