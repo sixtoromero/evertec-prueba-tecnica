@@ -45,6 +45,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "evertec.Application.Main", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{77615B86-0C5E-4536-8CFD-0E70414D1979}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{664FC1AC-ED04-4CE7-A89C-1F5CA36B467B}"
+	ProjectSection(SolutionItems) = preProject
+		DataBase\Backup-Evertec.bak = DataBase\Backup-Evertec.bak
+		DataBase\ScriptBD.sql = DataBase\ScriptBD.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
