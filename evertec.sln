@@ -47,7 +47,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{664FC1AC-ED04-4CE7-A89C-1F5CA36B467B}"
 	ProjectSection(SolutionItems) = preProject
-		DataBase\Backup-Evertec.bak = DataBase\Backup-Evertec.bak
+		DataBase\bd-prueba-tecnica-evertec.bak = DataBase\bd-prueba-tecnica-evertec.bak
 		DataBase\ScriptBD.sql = DataBase\ScriptBD.sql
 	EndProjectSection
 EndProject
