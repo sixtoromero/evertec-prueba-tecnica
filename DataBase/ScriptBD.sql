@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [evertec]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  Database [evertec]    Script Date: 17/01/2023 3:17:52 ******/
 CREATE DATABASE [evertec]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [evertec] SET QUERY_STORE = OFF
 GO
 USE [evertec]
 GO
-/****** Object:  Table [dbo].[Clientes]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  Table [dbo].[Clientes]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -99,24 +99,7 @@ CREATE TABLE [dbo].[Clientes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuarios]    Script Date: 16/01/2023 4:30:57 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Usuarios](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nombres] [nvarchar](150) NULL,
-	[Apellidos] [nvarchar](150) NULL,
-	[Correo] [nvarchar](150) NULL,
-	[Contrasena] [nvarchar](250) NULL,
- CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  StoredProcedure [dbo].[uspClientesInsert]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspClientesInsert]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +144,7 @@ COMMIT TRANSACTION
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[uspClientesUpdate]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspClientesUpdate]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,7 +183,7 @@ COMMIT TRANSACTION
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[uspDelClientes]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspDelClientes]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +209,7 @@ COMMIT TRANSACTION
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[uspDelUsuarios]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspDelUsuarios]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -252,7 +235,7 @@ COMMIT TRANSACTION
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[UspgetClientes]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[UspgetClientes]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +254,7 @@ FROM [dbo].[Clientes]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[UspgetClientesByID]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[UspgetClientesByID]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -290,7 +273,7 @@ SELECT
 FROM [dbo].[Clientes] WHERE Id = @IdCliente
  
 GO
-/****** Object:  StoredProcedure [dbo].[UspgetUsuarios]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[UspgetUsuarios]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +290,7 @@ FROM [dbo].[Usuarios]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[UspgetUsuariosByID]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[UspgetUsuariosByID]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -324,7 +307,7 @@ SELECT
 FROM [dbo].[Usuarios] WHERE Id = @Id
  
 GO
-/****** Object:  StoredProcedure [dbo].[UspgetUsuariosByUserName]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[UspgetUsuariosByUserName]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -342,7 +325,7 @@ SELECT
 FROM [dbo].[Usuarios] WHERE Correo = @Correo and Contrasena = @Contrasena
  
 GO
-/****** Object:  StoredProcedure [dbo].[uspUsuariosInsert]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspUsuariosInsert]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -380,7 +363,7 @@ COMMIT TRANSACTION
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[uspUsuariosUpdate]    Script Date: 16/01/2023 4:30:57 ******/
+/****** Object:  StoredProcedure [dbo].[uspUsuariosUpdate]    Script Date: 17/01/2023 3:17:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
