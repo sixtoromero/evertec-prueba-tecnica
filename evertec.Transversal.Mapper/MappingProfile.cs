@@ -8,8 +8,7 @@ namespace evertec.Transversal.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Cliente, ClienteDTO>().ReverseMap();
-            CreateMap<Usuarios, UsuariosDTO>().ReverseMap();
+            CreateMap<Cliente, ClienteDTO>().ReverseMap();            
         }
     }
 }

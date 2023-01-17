@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IUsuariosDomain.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\evertec.Domain.Entity\evertec.Domain.Entity.csproj" />
   </ItemGroup>
 

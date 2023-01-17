@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IUsuariosApplication.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\evertec.Application.DTO\evertec.Application.DTO.csproj" />
     <ProjectReference Include="..\evertec.Transversal.Common\evertec.Transversal.Common.csproj" />
   </ItemGroup>

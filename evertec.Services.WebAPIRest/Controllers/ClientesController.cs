@@ -221,30 +221,18 @@ namespace evertec.Services.WebAPIRest.Controllers
                     FileInfo fi = new FileInfo(fileExists);
                     if (fi.Exists)
                     {
-                        response = await _Application.DeleteAsync(Id);
+                        System.IO.File.Delete(fileExists);
+                        fi.Delete();                        
+                    }                    
+                }
 
-                        if (response.IsSuccess)
-                        {
-                            System.IO.File.Delete(fileExists);
-                            fi.Delete();
-                            return Ok(response);
-                        }
-                        else
-                        {
-                            return BadRequest(response); 
-                        }
-                    }
-                    else
-                    {
-                        response.IsSuccess = false;
-                        response.Message = "El archivo ya no existe.";
-                        return BadRequest(response);
-                    }
+                response = await _Application.DeleteAsync(Id);
+                if (response.IsSuccess)
+                {
+                    return Ok(response);
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "El archivo ya no existe.";
                     return BadRequest(response);
                 }
             }

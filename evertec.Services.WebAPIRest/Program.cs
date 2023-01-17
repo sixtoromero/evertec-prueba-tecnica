@@ -77,54 +77,11 @@ builder.Services.AddScoped<IClientesApplication, ClientesApplication>();
 builder.Services.AddScoped<IClientesDomain, ClientesDomain>();
 builder.Services.AddScoped<IClientesRepository, ClientesRepository>();
 
-//Usuarios
-builder.Services.AddScoped<IUsuariosApplication, UsuariosApplication>();
-builder.Services.AddScoped<IUsuariosDomain, UsuariosDomain>();
-builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
-
 builder.Services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
 var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 var IsSuer = appSettings.IsSuer;
 var Audience = appSettings.Audience;
-
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(x =>
-{
-    x.Events = new JwtBearerEvents
-    {
-        OnTokenValidated = context =>
-        {
-            var userId = int.Parse(context.Principal.Identity.Name);
-            return Task.CompletedTask;
-        },
-        OnAuthenticationFailed = context =>
-        {
-            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
-            {
-                context.Response.Headers.Add("Token-Expired", "true");
-            }
-            return Task.CompletedTask;
-        }
-    };
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = false;
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
-        ValidIssuer = IsSuer,
-        ValidateAudience = true,
-        ValidAudience = Audience,
-        ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero
-    };
-});
 
 var app = builder.Build();
 

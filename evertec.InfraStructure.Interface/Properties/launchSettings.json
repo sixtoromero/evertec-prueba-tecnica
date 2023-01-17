@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "evertec.InfraStructure.Interface": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51982;http://localhost:51985"
+    }
+  }
+}
